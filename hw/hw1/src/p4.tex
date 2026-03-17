@@ -1,0 +1,32 @@
+% Copyright 2023 Sycuricon Group
+% Author: Phantom (phantom@zju.edu.cn)
+
+\section*{Problem 4}
+\label{p4}
+
+Fill in code for the following C functions, following the bit-level integer coding rules (\nameref{app1}). 
+Function \code{srl} performs a logical right shift using an arithmetic right shift (given by value \code{xsra}), followed by other operations not including right shifts or division. 
+Function \code{sra} performs an arithmetic right shift using a logical right shift (given by value \code{xsrl}), followed by other operations not including right shifts or division. 
+You may use the computation \code{8*sizeof(int)} to determine \code{w}, the number of bits in data type int. 
+The shift amount \code{k} ranges from \code{0} to \code{w-1}. 
+\hword{Warning: Bit-level coding is a must!}
+
+\begin{lstlisting}[frame=tb, language=C++]
+unsigned srl(unsigned x, int k) {
+    /* Perform shift logically */
+    unsigned xsra = (int) x >> k;
+    /*
+     * Tip: Your code should be added here. 
+     */
+}
+    
+int sra(int x, int k) {
+    /* Perform shift arithmetically */
+    unsigned xsrl = (unsigned) x >> k;
+    /*
+     * Tip: Your code should be added here. 
+     */
+}
+\end{lstlisting}
+
+\subsection*{Answer:}

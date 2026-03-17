@@ -1,0 +1,89 @@
+% Copyright 2023 Sycuricon Group
+% Author: Phantom (phantom@zju.edu.cn)
+
+\section[Appendix 1]{Appendix 1: Bit-Level Integer Coding Rules}\label{app1}
+
+In \nameref{p4}, we will artificially restrict what programming constructs you can use to help you gain a better understanding of the bit-level, logic, and arithmetic operations of C. 
+In answering these problems, your code must follow these rules:
+
+\subsection*{Assumptions}
+
+\begin{enumerate}
+    \item Integers are represented in two's-complement form.
+    \item Right shifts of signed data are performed arithmetically.
+    \item Data type int is w bits long. For some of the problems, you will be given a specific value for \code{w}, but otherwise your code should work as long as w is a multiple of 8. You can use the expression \code{sizeof(int)<<3} to compute \code{w}.
+\end{enumerate}
+
+\subsection*{Forbidden}
+
+\begin{enumerate}
+    \item Conditionals (\code{if} or \code{?:}), loops, switch statements, function calls, and macro invocations. 
+    \item Division, modulus, and multiplication.
+    \item Relative comparison operators (\code{<}, \code{>}, \code{<=}, and \code{>=}).
+\end{enumerate}
+
+\subsection*{Allowed operations}
+
+\begin{enumerate}
+    \item All bit-level and logic operations.
+    \item Left and right shifts, but only with shift amounts between \code{0} and \code{w-1}. Addition and subtraction.
+    \item Equality (\code{==}) and inequality (\code{!=}) tests.
+    \item Integer constants \code{INT\_MIN} and \code{INT\_MAX}. (TIP: \code{<limits.h>} should be included if you want to use them.)
+    \item Casting between data types int and unsigned, either explicitly or implicitly.
+\end{enumerate}
+
+\noindent Even with these rules, you should try to make your code readable by choosing descriptive variable names and using comments to describe the logic behind your solutions.
+
+\noindent As an example, the following code extracts the most significant byte from integer argument \code{x}:
+
+\begin{lstlisting}[frame=tb, language=C++]
+/* Get most significant byte from x */
+int get_msb(int x) {
+    /* Shift by w-8 */
+    int shift_val = (sizeof(int)-1)<<3; /* Arithmetic shift */
+    int xright = x >> shift_val;
+    /* Zero all but LSB */
+    return xright & 0xFF;
+}
+\end{lstlisting}
+
+
+
+
+
+\section[Appendix 2]{Appendix 2: Bit-Level Floating-Point Coding Rules}\label{app2}
+
+In \nameref{p5}, you will write code to implement floating-point functions, operating directly on bit-level representations of floating-point numbers.
+Your code should exactly replicate the conventions for IEEE floating-point operations, including using round-to-even mode when rounding is required.
+
+\noindent To this end, we define data type \code{float\_bits} to be equivalent to unsigned:
+
+\begin{lstlisting}[frame=tb, language=C++]
+/* Access bit-level representation floating-point number */
+typedef unsigned float_bits;
+\end{lstlisting}
+
+\noindent Rather than using data type float in your code, you will use \code{float\_bits}. 
+You may use both int and unsigned data types, including unsigned and integer constants and operations. 
+You may not use any unions, structs, or arrays. 
+Most significantly, you may not use any floating-point data types, operations, or constants. 
+Instead, your code should perform the bit manipulations that implement the specified floating-point operations.
+
+\noindent The following function illustrates the use of these coding rules. 
+For argument \code{f} , it returns ±0 if \code{f} is denormalized (preserving the sign of \code{f}), and returns \code{f} otherwise.
+
+\begin{lstlisting}[frame=tb, language=C++]
+/* If f is denorm, return 0. Otherwise, return f */
+float_bits float_denorm_zero(float_bits f) {
+	/* Decompose bit representation into parts */ 
+  unsigned sign = f>>31;
+	unsigned exp = f>>23 & 0xFF;
+	unsigned frac = f & 0x7FFFFF;
+	if (exp == 0) {
+    /* Denormalized. Set fraction to 0 */
+		frac = 0; 
+    }
+	/* Reassemble bits */
+	return (sign << 31) | (exp << 23) | frac; 
+}
+\end{lstlisting}

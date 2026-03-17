@@ -1,0 +1,32 @@
+% Copyright 2023 Sycuricon Group
+% Author: Phantom (phantom@zju.edu.cn)
+
+\section*{Problem 3}
+
+Consider the following two 9-bit floating-point representations based on the IEEE floating point format.
+
+\begin{itemize}
+    \item Format A: There is 1 sign bit. There are k = 5 exponent bits. The exponent bias is 15. There are n = 3 fraction bits.
+    \item Format B: There is 1 sign bit. There are k = 3 exponent bits. The exponent bias is 3. There are n = 5 fraction bits.
+\end{itemize}
+
+\noindent In the following table, you are given some bit patterns in format A, and your task is to convert them to the value in format B.
+In addition, give the values of numbers given by the format A and format B bit patterns.
+Give these as whole numbers (e.g., 17) or as fractions (e.g., 17/64).
+If the value represented by bits in format A cannot be expressed by format B, please fill \textbf{NULL} in the \textbf{Value} column and explain the reason briefly in \textbf{Bits} column.
+
+\begin{table}[h]
+    \center
+    \begin{tabular}{c|>{\centering}p{3cm}|p{3cm}|p{3cm}|p{3cm}}
+    \hline
+        & \multicolumn{2}{c|}{Format A} & \multicolumn{2}{c}{Format B} \\ \hline
+    No. & \multicolumn{1}{c|}{Bits} & \multicolumn{1}{c|}{Value} & \multicolumn{1}{c|}{Bits} & \multicolumn{1}{c}{Value} \\ \hline
+    1   & 0 10010 011 &       &      &       \\
+    2   & 1 00011 010 &       &      &       \\
+    3   & 0 00011 010 &       &      &       \\
+    4   & 1 11000 000 &       &      &       \\
+    5   & 0 10011 100 &       &      &       \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection*{Answer:}

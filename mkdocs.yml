@@ -1,0 +1,127 @@
+site_name: 浙江大学 26 年春夏系统一实验 # 请注意修改年份
+site_url: http://zju-sys.pages.zjusct.io/sys1/sys1-sp26 # 请注意修改年份
+site_dir: public # 设置 site_dir 配合 gitlab CI
+repo_url: https://git.zju.edu.cn/zju-sys/sys1/sys1-sp26 # 请注意修改年份
+repo_name: zju-sys/sys1/sys1-sp26 # 请注意修改年份
+edit_uri: -/blob/master/docs
+dev_addr: '127.0.0.1:5500'
+
+extra:
+  year: 26
+  year_long: 2026
+
+theme:
+  name: material
+  icon:
+    edit: material/pencil
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.tracking
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+  font:
+    code: JetBrains Mono
+    text: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - 首页: index.md
+  - 实验指导零:
+      - 第一部分: lab0-1.md
+      - 第二部分: lab0-2.md
+      - 附录：verilog 与电路: lab0-2-appendix.md
+  - 实验指导一:
+      - 第一部分: lab1-1.md
+      - 第二部分: lab1-2.md
+  # - 实验指导二:
+  #     - 第一部分: lab2-1.md
+  #     - 附录：参数式编程: lab2-1-appendix.md
+  # - 实验指导三: 
+  #     - 第一部分: lab3-1.md
+  #     - 第二部分: lab3-2.md
+  #     - 第三部分: lab3-3.md
+  #     - 附录：reg 与时序电路: lab3-1-appendix.md
+  #     - 附录：阻塞赋值: lab3-3-appendix.md
+  # - 实验指导四:
+  #     - 第一部分: lab4-1.md
+  #     - 第二部分(Bonus): lab4-2.md
+  #     - 附录：SystemVerilog 高级语法: lab4-1-appendix.md
+  # - 实验指导五:
+  #     - 第一部分: lab5-1.md
+  #     - 第二部分: lab5-2.md
+  # - 实验指导 project:
+  #     - 第一部分: project-1.md
+  #     - 第二部分: project-2.md
+  #     - Bonus: project-bonus.md
+  #     - 附录：处理器差分测试: project-2-appendix.md
+  - 环境配置:
+      - Windows 环境配置: setup.md
+      - macOS 环境配置: setup-mac.md
+  - 提交提问: issue.md
+  - 提交修改: pull.md
+  - 注意事项: Notes.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - meta
+  - def_list
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - admonition
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - heti:
+      extra_skipped_class:
+        - arithmatex
+  - macros
+
+extra_javascript:
+  - https://cdn.tonycrane.cc/utils/katex.min.js
+  - js/katex.js
+
+extra_css:
+  - https://cdn.tonycrane.cc/utils/katex.min.css
+  - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
+  - css/custom.css
+

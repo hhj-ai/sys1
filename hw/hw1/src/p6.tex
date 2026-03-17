@@ -1,0 +1,31 @@
+% Copyright 2023 Sycuricon Group
+% Author: Phantom (phantom@zju.edu.cn)
+
+\section*{Problem 6}
+
+Explain why the following code snippets are wrong:
+
+\begin{enumerate}
+    \item Code Snippet 1
+\begin{lstlisting}[frame=tb, language=C++]
+unsigned i; 
+int cnt = 10, sum = 0; 
+for (i = cnt - 1; i >= 0; i --) {
+    sum += i
+}
+print(sum);
+\end{lstlisting}
+
+    \item Code Snippet 2
+\begin{lstlisting}[frame=tb, language=C++]
+#define Delta sizeof(int)
+int i; 
+int cnt = 10, sum = 0; 
+for (i = cnt; i - Delta >= 0; i -= Delta) {
+    sum += i;
+} 
+print(sum);
+\end{lstlisting}
+\end{enumerate}
+
+\subsection*{Answer:}

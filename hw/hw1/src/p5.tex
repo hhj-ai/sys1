@@ -1,0 +1,21 @@
+% Copyright 2023 Sycuricon Group
+% Author: Phantom (phantom@zju.edu.cn)
+
+\section*{Problem 5}
+\label{p5}
+
+Following the bit-level floating-point coding rules (\nameref{app2}), implement the function with the following prototype:
+
+\begin{lstlisting}[frame=tb, language=C++]
+/* Compute -f. If f is NaN, then return f. */
+float float_negate(float f);
+\end{lstlisting}
+
+\noindent For floating-point number f , this function computes -f. 
+If f is NaN, your function should simply return f.
+\hword{Warning: Bit-level coding is a must!}
+Testing code is shown here:
+
+\lstinputlisting[language=C++]{src/p5.cpp}
+
+\subsection*{Answer:}
